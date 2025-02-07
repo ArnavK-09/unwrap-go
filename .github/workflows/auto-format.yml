@@ -28,7 +28,9 @@ jobs:
 
       - name: Commit and Push Changes
         continue-on-error: true
-        run: |
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+        run: |token: ${{ secrets.GITHUB_TOKEN }}
           git add .
           git commit -m "chore: auto format" || echo "No changes to commit"
           git push
