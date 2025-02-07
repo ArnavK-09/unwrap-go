@@ -26,9 +26,11 @@
 ###### terminal
 
 ```bash
-npm install --save-dev unwrap-go
-bun add -D unwrap-go
-deno add npm:unwrap-go
+deno add jsr:@arnavk-09/unwrap-go
+npx jsr add @arnavk-09/unwrap-go
+bunx jsr add @arnavk-09/unwrap-go
+pnpm dlx jsr add @arnavk-09/unwrap-go
+yarn dlx jsr add @arnavk-09/unwrap-go
 ```
 
 ## 🚀 Usage
