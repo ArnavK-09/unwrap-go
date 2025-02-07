@@ -4,6 +4,7 @@
   "license": "Unlicense",
   "exports": "./index.ts",
   "publish": {
+
     "exclude": [
  ".github"
     ]
