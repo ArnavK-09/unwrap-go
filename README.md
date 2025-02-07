@@ -72,11 +72,9 @@ function divide(a: number, b: number) {
 
 |Task | Status |
 | :---: | :---: |
-|🔄 Add Result.map() method | 🟡 | 
-|🔄 Add Result.flatMap() method | 🟡 | 
-|📝 Add comprehensive documentation | 🟡 | 
-|✅ Core implementation | 🟢 | 
-|🧪 Add test suite | 🔴 | 
+|🧪 Add tests | 🔴 | 
+|🧪 Publish To NPM| 🔴 |  
+|🧪 Publish To JSR| 🔴 | 
 
 ## 💻 Contributing
 
@@ -87,7 +85,7 @@ function divide(a: number, b: number) {
    Click the **Fork** button at the top-right of the repo page.
 
 2. **Clone Your Fork**  
-   Clone the repo locally:
+   Clone the repo locally: YOU
 
    ```bash
    git clone https://github.com/ArnavK-09/unwrap-go.git
