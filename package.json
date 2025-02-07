@@ -21,7 +21,5 @@
     "type": "git",
     "url": "https://github.com/ArnavK-09/unwrap-go.git"
   },
-  "engines": {
-    "node": ">=14"
-  }
+  "exclude" : [".github"]
 }
