@@ -2,8 +2,8 @@
   "name": "@arnavk-09/unwrap-go",
   "version": "0.0.4",
   "description": "Go-like error handling in TypeScript/JavaScript with full type support.",
-  "main": "unwrap-go.js",
-  "types": "unwrap-go.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "bunx tsc"
   },
