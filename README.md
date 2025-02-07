@@ -74,7 +74,7 @@ function divide(a: number, b: number) {
 | :---: | :---: |
 |🧪 Add tests | 🔴 | 
 |🧪 Publish To NPM| 🔴 |  
-|🧪 Publish To JSR| 🔴 | 
+|🧪 Publish To JSR| 🟢 | 
 
 ## 💻 Contributing
 
