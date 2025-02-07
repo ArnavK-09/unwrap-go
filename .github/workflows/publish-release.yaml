@@ -1,50 +1,53 @@
-name: Create Release on Version Commit
+name: Release and Publish to JSR
 
 on:
   push:
     branches:
-      - main  # Only run on main branch commits
+      - main  # Trigger on commits to main branch
 
 jobs:
-  create_release:
+  release-publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # Ensure permissions to create tags and releases
+      contents: write  # For creating tags and releases
+      id-token: write  # For JSR authentication
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for tags
+          fetch-depth: 0  # Required for tag operations
 
-      - name: Check Commit Message for Version Pattern
-        id: check
+      - name: Check Version Pattern in Commit Message
+        id: version-check
         shell: bash
         run: |
           commit_message="${{ github.event.head_commit.message }}"
-          echo "Commit message: $commit_message"
-          
           if [[ "$commit_message" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "match=true" >> "$GITHUB_OUTPUT"
-            echo "version=$commit_message" >> "$GITHUB_OUTPUT"
+            echo "version=${commit_message}" >> "$GITHUB_OUTPUT"
           else
             echo "match=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Create and Push Tag
-        if: steps.check.outputs.match == 'true' && github.actor == 'ArnavK-09'
+      - name: Create Git Tag
+        if: steps.version-check.outputs.match == 'true' && github.actor == 'ArnavK-09'
         run: |
           git config --global user.name "ArnavK-09"
           git config --global user.email "arnavkaushal09@gmail.com"
-          git tag ${{ steps.check.outputs.version }}
-          git push origin ${{ steps.check.outputs.version }}
+          git tag ${{ steps.version-check.outputs.version }}
+          git push origin ${{ steps.version-check.outputs.version }}
 
-      - name: Create Release
-        if: steps.check.outputs.match == 'true' && github.actor == 'ArnavK-09'
+      - name: Create GitHub Release
+        if: steps.version-check.outputs.match == 'true' && github.actor == 'ArnavK-09'
         uses: ncipollo/release-action@v1
         with:
-          tag: ${{ steps.check.outputs.version }}
-          name: 🫧 ${{ steps.check.outputs.version }} 🫧
-          body: Automatically generated release from commit message.
+          tag: ${{ steps.version-check.outputs.version }}
+          name: "🫧 ${{ steps.version-check.outputs.version }} 🫧"
+          body: "Automatically generated release from version commit"
           draft: false
           prerelease: false
+
+      - name: Publish Package to JSR
+        if: steps.version-check.outputs.match == 'true' && github.actor == 'ArnavK-09'
+        run: npx jsr publish
