@@ -1,6 +1,8 @@
 name: Format Codebase
 
-permissions: write-all
+permissions:
+  contents: write  
+  workflows: write
 
 on:
   workflow_dispatch:
