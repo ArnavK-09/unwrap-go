@@ -1,15 +1,30 @@
-export type Result<T, E = Error> = [T, null] | [null, E] 
-  
-export async function unwrapPromise<T>(promise: Promise<T>): Promise<Result<T>> { 
-   return promise 
-     .then<[T, null]>((data) => [data, null]) 
-     .catch<[null, Error]>((err) => [null, err]) 
- } 
-  
-export function unwrapSync<T>(fn: () => T): Result<T> { 
-   try { 
-     return [fn(), null] 
-   } catch (err) { 
-     return [null, err as Error] 
-   } 
- }
+export type Result<T, E = Error> = [T, null] | [null, E];
+
+/**
+ * Wraps a promise to return a Result tuple, handling both success and failure cases.
+ * 
+ * @param promise - The promise to unwrap.
+ * @returns A Promise resolving to a Result tuple with either data or an error.
+ */
+export async function unwrapPromise<T, E = Error>(promise: Promise<T>): Promise<Result<T, E>> {
+  try {
+    const data = await promise;
+    return [data, null];
+  } catch (err) {
+    return [null, err as E];
+  }
+}
+
+/**
+ * Executes a synchronous function and returns a Result tuple.
+ * 
+ * @param fn - The function to execute.
+ * @returns A Result tuple with either the function result or an error.
+ */
+export function unwrapSync<T, E = Error>(fn: () => T): Result<T, E> {
+  try {
+    return [fn(), null];
+  } catch (err) {
+    return [null, err as E];
+  }
+}
