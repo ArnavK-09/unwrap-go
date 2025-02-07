@@ -44,7 +44,7 @@ jobs:
         with:
           tag: ${{ steps.version-check.outputs.version }}
           name: "🫧 ${{ steps.version-check.outputs.version }} 🫧"
-          body: "Automatically generated release from version commit"
+          body: "- **https://jsr.io/@arnavk-09/unwrap-go/**"
           draft: false
           prerelease: false
 
