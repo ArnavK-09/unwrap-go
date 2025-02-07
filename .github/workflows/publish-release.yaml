@@ -1,0 +1,36 @@
+name: Create Release on Version Commit
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+  create_release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check commit message for version pattern
+        id: check
+        shell: bash
+        run: |
+          # Get the commit message from the head commit.
+          commit_message="${{ github.event.head_commit.message }}"
+          echo "Commit message: $commit_message"
+          
+          # Check if it matches the pattern: a lowercase "v" followed by 3 dot‐separated numbers.
+          if [[ "$commit_message" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "match=true" >> "$GITHUB_OUTPUT"
+            echo "version=$commit_message" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create Release
+        if: steps.check.outputs.match == 'true' && github.actor == 'ArnavK-09'
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.check.outputs.version }}
+          release_name: 🫧 ${{ steps.check.outputs.version }}
+          body: -# Automatically generated release from commit message.
+          draft: false
+          prerelease: false
