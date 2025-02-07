@@ -1,0 +1,48 @@
+name: Build and Publish on NPM
+
+on:
+  release:
+    types: [published]  # Trigger when a new release is published
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest  # Use the latest Bun version
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run tests
+        run: bun test
+
+      - name: Build package
+        run: bun run build || echo "No build step defined, skipping..."
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.event.release.tag_name != ''
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Configure npm for publishing
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+
+      - name: Publish to npm
+        run: bun publish --access public
