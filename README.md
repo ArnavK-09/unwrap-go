@@ -72,8 +72,7 @@ function divide(a: number, b: number) {
 
 |Task | Status |
 | :---: | :---: |
-|🧪 Add tests | 🔴 | 
-|🧪 Publish To NPM| 🔴 |  
+|🧪 Add tests | 🔴 |
 |🧪 Publish To JSR| 🟢 | 
 
 ## 💻 Contributing
@@ -81,7 +80,7 @@ function divide(a: number, b: number) {
 > [!TIP]  
 > We welcome contributions to improve **unwrap-go**! If you have suggestions, bug fixes, or new feature ideas, follow these steps:
 
-1. **Fork the Repository**  
+1. **Fork the Repository**  you 
    Click the **Fork** button at the top-right of the repo page.
 
 2. **Clone Your Fork**  
