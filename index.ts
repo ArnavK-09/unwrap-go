@@ -1,4 +1,4 @@
-type Result<T, E = Error> = [T, null] | [null, E] 
+export type Result<T, E = Error> = [T, null] | [null, E] 
   
 export async function unwrapPromise<T>(promise: Promise<T>): Promise<Result<T>> { 
    return promise 
