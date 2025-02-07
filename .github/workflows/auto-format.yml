@@ -1,0 +1,33 @@
+name: Format codebase 
+  
+ on: 
+   workflow_dispatch: 
+   push: 
+     branches: ["*"] 
+  
+ jobs: 
+   build: 
+     runs-on: ubuntu-latest 
+  
+     steps: 
+       - name: Checkout repository 
+         uses: actions/checkout@v4 
+  
+       - uses: oven-sh/setup-bun@v2 
+         with: 
+           bun-version: latest 
+    
+       - name: Format project 
+         run: bunx prettier -w . 
+    
+       - name: Commit and push changes 
+         continue-on-error: true 
+         run: | 
+           git config --global user.name "ArnavK-09" 
+           git config --globsl user.email "arnavkaushal09@gmail.com"
+           git add .  
+           git commit -m "chore: auto format" 
+           git push 
+  
+       - name: Continue 
+         run: exit 0
