@@ -5,7 +5,7 @@
   "main": "unwrap-go.js",
   "types": "unwrap-go.d.ts",
   "scripts": {
-    "test": "node unwrap-go.test.js"
+    "build": "bunx tsc"
   },
   "author": "ArnavK-09 <arnavkaushal09@gmail.com>",
   "license": "Unlicense",
