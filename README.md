@@ -23,32 +23,40 @@
 
 > You can add **unwrap-go** with one command via:
 
-###### Deno\*
+###### terminal
 
+```bash
+deno add jsr:@arnavk-09/unwrap-go  
+npx jsr add @arnavk-09/unwrap-go  
+bunx jsr add @arnavk-09/unwrap-go  
+pnpm dlx jsr add @arnavk-09/unwrap-go  
+yarn dlx jsr add @arnavk-09/unwrap-go
+
+```
+
+<p align="center">OR</p>
+
+###### Deno
 ```bash
 deno add jsr:@arnavk-09/unwrap-go
 ```
 
 ###### Npx
-
 ```bash
 npx jsr add @arnavk-09/unwrap-go
 ```
 
 ###### Bun
-
 ```bash
 bunx jsr add @arnavk-09/unwrap-go
 ```
 
 ###### Pnpm
-
 ```bash
 pnpm dlx jsr add @arnavk-09/unwrap-go
 ```
 
 ###### Yarn
-
 ```bash
 yarn dlx jsr add @arnavk-09/unwrap-go
 ```
