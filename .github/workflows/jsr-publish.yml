@@ -1,4 +1,4 @@
-name: Build and Publish on NPM
+name: Build and Publish on JSR
 
 on:
   release:
