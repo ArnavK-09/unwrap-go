@@ -1,5 +1,7 @@
 name: Format Codebase
 
+permissions: write-all
+
 on:
   workflow_dispatch:
   push:
@@ -20,7 +22,7 @@ jobs:
           bun-version: latest
 
       - name: Format Project
-        run: bunx biome format . --write
+        run: bunx prettier --write .
 
       - name: Commit and Push Changes
         continue-on-error: true
