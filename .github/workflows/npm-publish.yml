@@ -1,8 +1,11 @@
 name: Build and Publish on NPM
 
 on:
-  release:
-    types: [published]  # Trigger when a new release is published
+  workflow_run:
+    workflows: ["Create Release on Version Commit"] 
+    types:
+      - completed
+  workflow_dispatch: 
 
 jobs:
   build:
