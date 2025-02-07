@@ -3,21 +3,25 @@ name: Create Release on Version Commit
 on:
   push:
     branches:
-      - 'main'
+      - '**'
 
 jobs:
   create_release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write  # Ensure permissions to create tags and releases
+
     steps:
-      - name: Check commit message for version pattern
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check Commit Message for Version Pattern
         id: check
         shell: bash
         run: |
-          # Get the commit message from the head commit.
           commit_message="${{ github.event.head_commit.message }}"
           echo "Commit message: $commit_message"
           
-          # Check if it matches the pattern: a lowercase "v" followed by 3 dot‐separated numbers.
           if [[ "$commit_message" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
             echo "match=true" >> "$GITHUB_OUTPUT"
             echo "version=$commit_message" >> "$GITHUB_OUTPUT"
@@ -25,12 +29,20 @@ jobs:
             echo "match=false" >> "$GITHUB_OUTPUT"
           fi
 
+      - name: Create and Push Tag
+        if: steps.check.outputs.match == 'true' && github.actor == 'ArnavK-09'
+        run: |
+          git config --global user.name "ArnavK-09"
+          git config --global user.email "arnavkaushal09@gmail.com"
+          git tag ${{ steps.check.outputs.version }}
+          git push origin ${{ steps.check.outputs.version }}
+
       - name: Create Release
         if: steps.check.outputs.match == 'true' && github.actor == 'ArnavK-09'
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.check.outputs.version }}
-          release_name: 🫧 ${{ steps.check.outputs.version }}
-          body: -# Automatically generated release from commit message.
+          name: ${{ steps.check.outputs.version }}
+          body: Automatically generated release from commit message.
           draft: false
           prerelease: false
