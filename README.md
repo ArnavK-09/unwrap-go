@@ -69,7 +69,7 @@ yarn dlx jsr add @arnavk-09/unwrap-go
 ## 🚀 Usage
 
 ```typescript
-import { unwrapPromise, unwrapSync } from "unwrap-go";
+import { unwrapPromise, unwrapSync } from "@arnavk-09/unwrap-go";
 
 // Async example
 async function fetchData() {
