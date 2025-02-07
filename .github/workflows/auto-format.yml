@@ -20,7 +20,7 @@ jobs:
           bun-version: latest
 
       - name: Format Project
-        run: bunx prettier -w .
+        run: bunx biome format . --write
 
       - name: Commit and Push Changes
         continue-on-error: true
