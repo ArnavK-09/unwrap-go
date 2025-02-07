@@ -1,8 +1,8 @@
-<h1 align="center">🌬️ unwrap-go 🌬️</h1>
+<h1 align="center">🫧 unwrap-go 🫧</h1>
 <h2 align="center">Go-like Error Handling for TypeScript/JavaScript</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://emoji-route.deno.dev/gif/🌬️" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/gif/🫧" />
 </p>
 
 > [!NOTE]
