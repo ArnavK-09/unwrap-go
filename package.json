@@ -1,6 +1,6 @@
 {
-  "name": "unwrap-go",
-  "version": "1.0.0",
+  "name": "@arnavk-09/unwrap-go"",
+  "version": "0.0.1",
   "description": "Go-like error handling in TypeScript/JavaScript with full type support.",
   "main": "unwrap-go.js",
   "types": "unwrap-go.d.ts",
