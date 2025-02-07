@@ -6,7 +6,7 @@
 </p>
 
 > [!NOTE]
-> 
+>
 > unwrap-go brings Go-style error handling to TypeScript and JavaScript, offering a clean and predictable way to handle errors using Result tuples. This approach eliminates the need for try-catch blocks and provides a more functional approach to error management.
 
 ## 🌟 Features
@@ -36,53 +36,55 @@ yarn dlx jsr add @arnavk-09/unwrap-go
 ## 🚀 Usage
 
 ```typescript
-import { unwrapPromise, unwrapSync } from 'unwrap-go';
+import { unwrapPromise, unwrapSync } from "unwrap-go";
 
 // Async example
 async function fetchData() {
-  const [data, err] = await unwrapPromise(fetch('https://api.example.com/data'));
+  const [data, err] = await unwrapPromise(
+    fetch("https://api.example.com/data"),
+  );
   if (err) {
-    console.error('Failed to fetch:', err);
+    console.error("Failed to fetch:", err);
     return;
   }
-  console.log('Data:', data);
+  console.log("Data:", data);
 }
 
 // Sync example
 function divide(a: number, b: number) {
   const [result, err] = unwrapSync(() => {
-    if (b === 0) throw new Error('Division by zero');
+    if (b === 0) throw new Error("Division by zero");
     return a / b;
   });
   if (err) {
-    console.error('Division failed:', err);
+    console.error("Division failed:", err);
     return;
   }
-  console.log('Result:', result);
+  console.log("Result:", result);
 }
 ```
 
 ## 📚 API Reference
 
-| Function | Description | Parameters | Return Type |
-|----------|-------------|------------|-------------|
-| `unwrapPromise<T, E>` | Wraps a promise to return a Result tuple | `promise: Promise<T>` | `Promise<Result<T, E>>` |
-| `unwrapSync<T, E>` | Executes a synchronous function and returns a Result tuple | `fn: () => T` | `Result<T, E>` |
-| `Result<T, E>` | Type representing either success (T) or error (E) | `T`: Success type<br>`E`: Error type | `[T, null] \| [null, E]` |
+| Function              | Description                                                | Parameters                           | Return Type              |
+| --------------------- | ---------------------------------------------------------- | ------------------------------------ | ------------------------ |
+| `unwrapPromise<T, E>` | Wraps a promise to return a Result tuple                   | `promise: Promise<T>`                | `Promise<Result<T, E>>`  |
+| `unwrapSync<T, E>`    | Executes a synchronous function and returns a Result tuple | `fn: () => T`                        | `Result<T, E>`           |
+| `Result<T, E>`        | Type representing either success (T) or error (E)          | `T`: Success type<br>`E`: Error type | `[T, null] \| [null, E]` |
 
 ## 🛣️ Roadmap
 
-|Task | Status |
-| :---: | :---: |
-|🧪 Add tests | 🔴 |
-|🧪 Publish To JSR| 🟢 | 
+|       Task        | Status |
+| :---------------: | :----: |
+|   🧪 Add tests    |   🔴   |
+| 🧪 Publish To JSR |   🟢   |
 
 ## 💻 Contributing
 
 > [!TIP]  
 > We welcome contributions to improve **unwrap-go**! If you have suggestions, bug fixes, or new feature ideas, follow these steps:
 
-1. **Fork the Repository**  you 
+1. **Fork the Repository** you
    Click the **Fork** button at the top-right of the repo page.
 
 2. **Clone Your Fork**  
