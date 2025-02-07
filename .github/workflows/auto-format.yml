@@ -22,7 +22,7 @@ jobs:
           bun-version: latest
 
       - name: Format Project
-        run: bunx prettier --write .
+        run: bunx prettier "**/*" "!**/.github/**" --write
 
       - name: Commit and Push Changes
         if: success()  # Only run if formatting step succeeds
