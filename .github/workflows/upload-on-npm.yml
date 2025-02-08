@@ -1,0 +1,51 @@
+name: Build and Publish with Bun
+
+on:
+  push:
+    branches:
+      - main  # Trigger on commits to main branch
+  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # For creating tags and releases
+      id-token: write  # For npm authentication
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Required for tag operations
+
+      - name: Check Version Pattern in Commit Message
+        id: version-check
+        run: |
+          commit_message="${{ github.event.head_commit.message }}"
+          if [[ "$commit_message" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "match=true" >> "$GITHUB_OUTPUT"
+            echo "version=${commit_message}" >> "$GITHUB_OUTPUT"
+          else
+            echo "match=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install Bun
+        if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest  
+
+      - name: Install Dependencies with Bun
+        if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
+        run: bun install
+
+      - name: Build TypeScript with Bun
+        if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
+        run: bunx tsc  
+
+      - name: Publish to npm using Bun
+        if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  
+        run: bun publish --access public
