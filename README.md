@@ -114,7 +114,7 @@ function divide(a: number, b: number) {
 
 |       Task        | Status |
 | :---------------: | :----: |
-|   🧪 Add tests    |   🟡   |
+|   🧪 Add tests    |   🔴   |
 | 🧪 Publish To JSR |   🟢   |
 | 🧪 Publish To NPM |   🟢   |
 
