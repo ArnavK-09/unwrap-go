@@ -44,7 +44,11 @@ jobs:
         with:
           tag: ${{ steps.version-check.outputs.version }}
           name: "🫧 ${{ steps.version-check.outputs.version }} 🫧"
-          body: "- **https://jsr.io/@arnavk-09/unwrap-go/**"
+          body: |
+            ## 🧨 Registries
+
+            - **[jsr.io/@arnavk-09/unwrap-go](https://jsr.io/@arnavk-09/unwrap-go)**
+            - **[npmjs.com/package/@arnavk-09/unwrap-go](https://www.npmjs.com/package/@arnavk-09/unwrap-go)**
           draft: false
           prerelease: false
 
