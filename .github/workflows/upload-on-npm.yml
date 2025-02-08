@@ -30,22 +30,23 @@ jobs:
             echo "match=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Install Bun
+      - name: Setup Node.js
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
-        uses: oven-sh/setup-bun@v2
+        uses: actions/setup-node@v4
         with:
-          bun-version: latest  
+          node-version: 'lts/*'
+          registry-url: 'https://registry.npmjs.org/'
 
-      - name: Install Dependencies with Bun
+      - name: Install Dependencies
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
-        run: bun install
+        run: npm install
 
-      - name: Build TypeScript with Bun
+      - name: Build TypeScript
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
-        run: bunx tsc  
+        run: npx tsc
 
-      - name: Publish to npm using Bun
+      - name: Publish to npm
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}  
-        run: bun publish --access public
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --access public
