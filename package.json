@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-  },,
+  },
   "author": "ArnavK-09 <arnavkaushal09@gmail.com>",
   "license": "Unlicense",
   "repository": {
