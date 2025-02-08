@@ -21,8 +21,8 @@
 
 ## 🧨 Registries
 
-- **https://jsr.io/@arnavk-09/unwrap-go**
-- **https://www.npmjs.com/package/@arnavk-09/unwrap-go**
+- **[jsr.io/@arnavk-09/unwrap-go](https://jsr.io/@arnavk-09/unwrap-go)**
+- **[npmjs.com/package/@arnavk-09/unwrap-go])https://www.npmjs.com/package/@arnavk-09/unwrap-go)**
 
 ## 💻 Installation
 
@@ -116,6 +116,7 @@ function divide(a: number, b: number) {
 | :---------------: | :----: |
 |   🧪 Add tests    |   🔴   |
 | 🧪 Publish To JSR |   🟢   |
+| 🧪 Publish To NPM |   🟢   |
 
 ## 💻 Contributing
 
