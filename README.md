@@ -22,7 +22,7 @@
 ## 🧨 Registries
 
 - **[jsr.io/@arnavk-09/unwrap-go](https://jsr.io/@arnavk-09/unwrap-go)**
-- **[npmjs.com/package/@arnavk-09/unwrap-go])https://www.npmjs.com/package/@arnavk-09/unwrap-go)**
+- **[npmjs.com/package/@arnavk-09/unwrap-go](https://www.npmjs.com/package/@arnavk-09/unwrap-go)**
 
 ## 💻 Installation
 
