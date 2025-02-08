@@ -19,6 +19,11 @@
 - **Zero Dependencies** – Lightweight implementation with no external dependencies
 - **Synchronous Support** – Handle both async and sync operations with consistent patterns
 
+## 🧨 Registries 
+
+- **https://jsr.io/@arnavk-09/unwrap-go**
+- **https://www.npmjs.com/package/@arnavk-09/unwrap-go**
+
 ## 💻 Installation
 
 > You can add **unwrap-go** with one command via:
