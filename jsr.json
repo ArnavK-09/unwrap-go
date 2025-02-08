@@ -1,6 +1,6 @@
 {
   "name": "@arnavk-09/unwrap-go",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "Unlicense",
   "exports": "./index.ts",
   "publish": {
