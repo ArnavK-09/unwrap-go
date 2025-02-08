@@ -1,0 +1,25 @@
+{
+  "name": "@arnavk-09/unwrap-go",
+  "version": "0.0.6",
+  "description": "Go-like Error Handling for TypeScript/JavaScript",
+  "main": "dist/index.js", 
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+  },,
+  "author": "ArnavK-09 <arnavkaushal09@gmail.com>",
+  "license": "Unlicense",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ArnavK-09/unwrap-go.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
