@@ -13,7 +13,7 @@
 
 > **unwrap-go** features intro:
 
-- **Go-Style Error Handling** – Uses tuple returns ([data, error]) similar to Go's approach, making error handling more explicit and predictable
+- **Go-Style Error Handling** – Uses tuple returns (`[data, error]`) similar to Go's approach, making error handling more explicit and predictable
 - **Promise Support** – Built-in support for handling asynchronous operations with the same elegant syntax
 - **Type Safety** – Full TypeScript support with generic types for both success and error cases
 - **Zero Dependencies** – Lightweight implementation with no external dependencies
