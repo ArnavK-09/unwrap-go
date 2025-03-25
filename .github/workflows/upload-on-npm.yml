@@ -3,21 +3,21 @@ name: Build and Publish with NPM
 on:
   push:
     branches:
-      - main  # Trigger on commits to main branch
-  workflow_dispatch:  # Allow manual trigger from GitHub Actions UI
+      - main # Trigger on commits to main branch
+  workflow_dispatch: # Allow manual trigger from GitHub Actions UI
 
 jobs:
   build-publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # For creating tags and releases
-      id-token: write  # For npm authentication
+      contents: write # For creating tags and releases
+      id-token: write # For npm authentication
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for tag operations
+          fetch-depth: 0 # Required for tag operations
 
       - name: Check Version Pattern in Commit Message
         id: version-check
@@ -34,8 +34,8 @@ jobs:
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'
         uses: actions/setup-node@v4
         with:
-          node-version: 'lts/*'
-          registry-url: 'https://registry.npmjs.org/'
+          node-version: "lts/*"
+          registry-url: "https://registry.npmjs.org/"
 
       - name: Install Dependencies
         if: steps.version-check.outputs.match == 'true' || github.event_name == 'workflow_dispatch'

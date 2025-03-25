@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - '**'  # Matches all branches
+      - "**" # Matches all branches
 
 jobs:
   format:
@@ -25,7 +25,7 @@ jobs:
         run: bunx prettier "**/*.{ts,json,md}" "!**/.github/**" --write
 
       - name: Commit and Push Changes
-        if: success()  # Only run if formatting step succeeds
+        if: success() # Only run if formatting step succeeds
         run: |
           git config --global user.name "ArnavK-09"
           git config --global user.email "arnavkaushal09@gmail.com"

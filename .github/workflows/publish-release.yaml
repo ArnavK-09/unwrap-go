@@ -3,20 +3,20 @@ name: Release and Publish to JSR
 on:
   push:
     branches:
-      - main  # Trigger on commits to main branch
+      - main # Trigger on commits to main branch
 
 jobs:
   release-publish:
     runs-on: ubuntu-latest
     permissions:
-      contents: write  # For creating tags and releases
-      id-token: write  # For JSR authentication
+      contents: write # For creating tags and releases
+      id-token: write # For JSR authentication
 
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Required for tag operations
+          fetch-depth: 0 # Required for tag operations
 
       - name: Check Version Pattern in Commit Message
         id: version-check

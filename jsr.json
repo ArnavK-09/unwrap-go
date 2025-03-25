@@ -1,9 +1,9 @@
 {
   "name": "@arnavk-09/unwrap-go",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "Unlicense",
   "exports": "./index.ts",
   "publish": {
-    "exclude": [".github"]
+    "exclude": [".github", "node_modules"]
   }
 }

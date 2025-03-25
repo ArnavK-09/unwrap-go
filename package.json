@@ -1,11 +1,11 @@
 {
   "name": "@arnavk-09/unwrap-go",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Go-like Error Handling for TypeScript/JavaScript",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsup"
   },
   "author": "ArnavK-09 <arnavkaushal09@gmail.com>",
   "license": "Unlicense",
@@ -20,6 +20,7 @@
     "bun": ">=1.0.0"
   },
   "devDependencies": {
+    "tsup": "^8.4.0",
     "typescript": "^5.0.0"
   }
 }
